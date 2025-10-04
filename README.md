@@ -88,6 +88,9 @@ ctf/
 ├── package.json
 ├── tailwind.config.js
 ├── vite.config.ts
+├── netlify.toml
+├── deploy.sh
+├── _redirects
 └── README.md
 ```
 
@@ -113,15 +116,33 @@ All components are located in `src/components/` and can be easily modified:
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### Netlify (Recommended)
+1. **Automatic Deployment**:
+   - Connect your GitHub repository to Netlify
+   - Netlify will automatically detect the Vite configuration
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+   - Deploy with zero configuration
+
+2. **Manual Deployment**:
+   ```bash
+   # Run the deployment script
+   ./deploy.sh
+   
+   # Or manually build and deploy
+   npm run build
+   # Upload the 'dist' folder to Netlify
+   ```
+
+3. **Netlify Configuration**:
+   - The project includes `netlify.toml` for automatic configuration
+   - SPA routing is handled with redirects
+   - Caching headers are optimized for performance
+
+### Vercel
 1. Connect your GitHub repository to Vercel
 2. Vercel will automatically detect the Vite configuration
 3. Deploy with zero configuration
-
-### Netlify
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to Netlify
-3. Configure redirects for SPA routing
 
 ### GitHub Pages
 1. Build the project: `npm run build`
