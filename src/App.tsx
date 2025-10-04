@@ -1,24 +1,19 @@
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import About from './components/About';
-import ChallengeDomains from './components/ChallengeDomains';
-import Schedule from './components/Schedule';
-import Registration from './components/Registration';
-import Leaderboard from './components/Leaderboard';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import SchedulePage from './pages/SchedulePage';
+import LeaderboardPage from './pages/LeaderboardPage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
-      <Navigation />
-      <Hero />
-      <About />
-      <ChallengeDomains />
-      <Schedule />
-      <Registration />
-      <Leaderboard />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-gradient-to-br from-orange-200 via-yellow-300 to-red-400 text-gray-800">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/schedule" element={<SchedulePage />} />
+          <Route path="/leaderboard" element={<LeaderboardPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

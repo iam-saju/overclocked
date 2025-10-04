@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Lock, Globe, Search, Code, Binary, Eye, Terminal, Image, Network, Puzzle, Users, Brain, Bot, X, Shield, Zap, Trophy } from 'lucide-react';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
 interface Domain {
   name: string;
@@ -10,7 +12,7 @@ interface Domain {
   difficulty: string;
 }
 
-export default function ChallengeDomains() {
+export default function ChallengeDomainsPage() {
   const [selectedDomain, setSelectedDomain] = useState<Domain | null>(null);
 
   const domains: Domain[] = [
@@ -131,9 +133,11 @@ export default function ChallengeDomains() {
   };
 
   return (
-    <section id="domains" className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0a0a0a] to-[#1a1a2e] relative overflow-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      <Navigation />
+      
       {/* Enhanced Bag Theme Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-96 h-96 bg-[#00ff9d] rounded-full filter blur-[150px] opacity-20 animate-pulse"></div>
         <div className="absolute top-40 right-20 w-80 h-80 bg-[#00d9ff] rounded-full filter blur-[150px] opacity-20 animate-pulse delay-1000"></div>
         <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-[#ff006e] rounded-full filter blur-[150px] opacity-15 animate-pulse delay-500"></div>
@@ -150,138 +154,140 @@ export default function ChallengeDomains() {
         <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-[#ff006e]/20 to-transparent"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header Section */}
-        <div className="text-center mb-20">
-          <div className="mb-6 flex justify-center items-center gap-4">
-            <Shield className="text-[#00d9ff] glow-blue" size={48} />
-            <h2 className="text-5xl md:text-7xl font-bold text-white">
-              CHALLENGE <span className="text-[#00d9ff] glow-blue">DOMAINS</span>
-            </h2>
-            <Shield className="text-[#00d9ff] glow-blue" size={48} />
-          </div>
-          <div className="w-32 h-1 bg-gradient-to-r from-transparent via-[#00d9ff] to-transparent mx-auto mb-8"></div>
-          <p className="text-[#a0a0a0] text-xl max-w-3xl mx-auto leading-relaxed">
-            Explore 13 diverse cybersecurity domains, each designed to test different aspects of your hacking skills.
-            From cryptography to AI debates, choose your battlefield and conquer the challenges.
-          </p>
-          
-          {/* Stats Section */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            <div className="bg-[#1a1a2e]/50 backdrop-blur-sm border border-[#00ff9d]/30 rounded-lg p-4">
-              <div className="text-3xl font-bold text-[#00ff9d] glow-green">100+</div>
-              <div className="text-sm text-[#a0a0a0]">Challenges</div>
+      <section className="relative py-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Header Section */}
+          <div className="text-center mb-20">
+            <div className="mb-6 flex justify-center items-center gap-4">
+              <Shield className="text-[#00d9ff] glow-blue" size={48} />
+              <h1 className="text-5xl md:text-7xl font-bold text-white">
+                CHALLENGE <span className="text-[#00d9ff] glow-blue">DOMAINS</span>
+              </h1>
+              <Shield className="text-[#00d9ff] glow-blue" size={48} />
             </div>
-            <div className="bg-[#1a1a2e]/50 backdrop-blur-sm border border-[#00d9ff]/30 rounded-lg p-4">
-              <div className="text-3xl font-bold text-[#00d9ff] glow-blue">13</div>
-              <div className="text-sm text-[#a0a0a0]">Domains</div>
-            </div>
-            <div className="bg-[#1a1a2e]/50 backdrop-blur-sm border border-[#ff006e]/30 rounded-lg p-4">
-              <div className="text-3xl font-bold text-[#ff006e] glow-pink">5</div>
-              <div className="text-sm text-[#a0a0a0]">Difficulty Levels</div>
-            </div>
-            <div className="bg-[#1a1a2e]/50 backdrop-blur-sm border border-[#ffbe0b]/30 rounded-lg p-4">
-              <div className="text-3xl font-bold text-[#ffbe0b] glow-gold">24h</div>
-              <div className="text-sm text-[#a0a0a0]">Competition</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Domains Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {domains.map((domain, index) => {
-            const Icon = domain.icon;
-            return (
-              <button
-                key={index}
-                onClick={() => setSelectedDomain(domain)}
-                className="group relative bg-[#1a1a2e]/80 backdrop-blur-sm border rounded-xl p-6 transition-all duration-300 hover:transform hover:scale-105 text-left overflow-hidden"
-                style={{
-                  borderColor: `${domain.color}30`,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = domain.color;
-                  e.currentTarget.style.boxShadow = `0 0 40px ${domain.color}40`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = `${domain.color}30`;
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
-                {/* Background glow effect */}
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
-                  style={{ backgroundColor: domain.color }}
-                ></div>
-                
-                {/* Content */}
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <div
-                      className="w-14 h-14 rounded-xl flex items-center justify-center transition-all group-hover:scale-110"
-                      style={{
-                        backgroundColor: `${domain.color}15`,
-                        boxShadow: `0 0 20px ${domain.color}30`
-                      }}
-                    >
-                      <Icon style={{ color: domain.color }} size={28} />
-                    </div>
-                    <Zap style={{ color: domain.color }} size={20} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  
-                  <h3 className="text-white font-bold text-lg mb-2">{domain.name}</h3>
-                  
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs font-mono text-[#a0a0a0]">{domain.challenges} Challenges</span>
-                    <span className="text-xs">•</span>
-                    <span 
-                      className="text-xs font-semibold font-mono"
-                      style={{ color: getDifficultyColor(domain.difficulty) }}
-                    >
-                      {domain.difficulty}
-                    </span>
-                  </div>
-                  
-                  <div className="h-1 bg-[#0a0a0a] rounded-full overflow-hidden">
-                    <div 
-                      className="h-full transition-all duration-500"
-                      style={{ 
-                        width: '0%',
-                        backgroundColor: domain.color 
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.target as HTMLElement).style.width = '100%';
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.target as HTMLElement).style.width = '0%';
-                      }}
-                    ></div>
-                  </div>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Call to Action */}
-        <div className="mt-20 text-center">
-          <div className="bg-gradient-to-r from-[#1a1a2e]/80 to-[#0a0a0a]/80 backdrop-blur-sm border border-[#00ff9d]/30 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
-            <Shield className="text-[#00ff9d] mx-auto mb-6 glow-green" size={64} />
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to Accept the Challenge?
-            </h2>
-            <p className="text-[#a0a0a0] text-lg mb-8">
-              Register now and prove your skills across all 13 domains. The clock is ticking!
+            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-[#00d9ff] to-transparent mx-auto mb-8"></div>
+            <p className="text-[#a0a0a0] text-xl max-w-3xl mx-auto leading-relaxed">
+              Explore 13 diverse cybersecurity domains, each designed to test different aspects of your hacking skills.
+              From cryptography to AI debates, choose your battlefield and conquer the challenges.
             </p>
-            <a
-              href="#register"
-              className="inline-block px-10 py-4 bg-[#00ff9d] text-[#0a0a0a] font-bold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,255,157,0.6)]"
-            >
-              REGISTER NOW
-            </a>
+            
+            {/* Stats Section */}
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              <div className="bg-[#1a1a2e]/50 backdrop-blur-sm border border-[#00ff9d]/30 rounded-lg p-4">
+                <div className="text-3xl font-bold text-[#00ff9d] glow-green">100+</div>
+                <div className="text-sm text-[#a0a0a0]">Challenges</div>
+              </div>
+              <div className="bg-[#1a1a2e]/50 backdrop-blur-sm border border-[#00d9ff]/30 rounded-lg p-4">
+                <div className="text-3xl font-bold text-[#00d9ff] glow-blue">13</div>
+                <div className="text-sm text-[#a0a0a0]">Domains</div>
+              </div>
+              <div className="bg-[#1a1a2e]/50 backdrop-blur-sm border border-[#ff006e]/30 rounded-lg p-4">
+                <div className="text-3xl font-bold text-[#ff006e] glow-pink">5</div>
+                <div className="text-sm text-[#a0a0a0]">Difficulty Levels</div>
+              </div>
+              <div className="bg-[#1a1a2e]/50 backdrop-blur-sm border border-[#ffbe0b]/30 rounded-lg p-4">
+                <div className="text-3xl font-bold text-[#ffbe0b] glow-gold">24h</div>
+                <div className="text-sm text-[#a0a0a0]">Competition</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Domains Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {domains.map((domain, index) => {
+              const Icon = domain.icon;
+              return (
+                <button
+                  key={index}
+                  onClick={() => setSelectedDomain(domain)}
+                  className="group relative bg-[#1a1a2e]/80 backdrop-blur-sm border rounded-xl p-6 transition-all duration-300 hover:transform hover:scale-105 text-left overflow-hidden"
+                  style={{
+                    borderColor: `${domain.color}30`,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = domain.color;
+                    e.currentTarget.style.boxShadow = `0 0 40px ${domain.color}40`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = `${domain.color}30`;
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  {/* Background glow effect */}
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                    style={{ backgroundColor: domain.color }}
+                  ></div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className="flex items-start justify-between mb-4">
+                      <div
+                        className="w-14 h-14 rounded-xl flex items-center justify-center transition-all group-hover:scale-110"
+                        style={{
+                          backgroundColor: `${domain.color}15`,
+                          boxShadow: `0 0 20px ${domain.color}30`
+                        }}
+                      >
+                        <Icon style={{ color: domain.color }} size={28} />
+                      </div>
+                      <Zap style={{ color: domain.color }} size={20} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                    
+                    <h3 className="text-white font-bold text-lg mb-2">{domain.name}</h3>
+                    
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-xs font-mono text-[#a0a0a0]">{domain.challenges} Challenges</span>
+                      <span className="text-xs">•</span>
+                      <span 
+                        className="text-xs font-semibold font-mono"
+                        style={{ color: getDifficultyColor(domain.difficulty) }}
+                      >
+                        {domain.difficulty}
+                      </span>
+                    </div>
+                    
+                    <div className="h-1 bg-[#0a0a0a] rounded-full overflow-hidden">
+                      <div 
+                        className="h-full transition-all duration-500"
+                        style={{ 
+                          width: '0%',
+                          backgroundColor: domain.color 
+                        }}
+                        onMouseEnter={(e) => {
+                          (e.target as HTMLElement).style.width = '100%';
+                        }}
+                        onMouseLeave={(e) => {
+                          (e.target as HTMLElement).style.width = '0%';
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Call to Action */}
+          <div className="mt-20 text-center">
+            <div className="bg-gradient-to-r from-[#1a1a2e]/80 to-[#0a0a0a]/80 backdrop-blur-sm border border-[#00ff9d]/30 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+              <Shield className="text-[#00ff9d] mx-auto mb-6 glow-green" size={64} />
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Ready to Accept the Challenge?
+              </h2>
+              <p className="text-[#a0a0a0] text-lg mb-8">
+                Register now and prove your skills across all 13 domains. The clock is ticking!
+              </p>
+              <a
+                href="/#register"
+                className="inline-block px-10 py-4 bg-[#00ff9d] text-[#0a0a0a] font-bold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,255,157,0.6)]"
+              >
+                REGISTER NOW
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Modal for Domain Details */}
       {selectedDomain && (
@@ -375,6 +381,8 @@ export default function ChallengeDomains() {
           </div>
         </div>
       )}
-    </section>
+
+      <Footer />
+    </div>
   );
 }
