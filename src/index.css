@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Roboto+Mono:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glow-green {
+    text-shadow: 0 0 10px rgba(0, 255, 157, 0.5),
+                 0 0 20px rgba(0, 255, 157, 0.3),
+                 0 0 30px rgba(0, 255, 157, 0.2);
+  }
+
+  .glow-blue {
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5),
+                 0 0 20px rgba(0, 217, 255, 0.3),
+                 0 0 30px rgba(0, 217, 255, 0.2);
+  }
+
+  .glow-pink {
+    text-shadow: 0 0 10px rgba(255, 0, 110, 0.5),
+                 0 0 20px rgba(255, 0, 110, 0.3),
+                 0 0 30px rgba(255, 0, 110, 0.2);
+  }
+
+  .glow-gold {
+    text-shadow: 0 0 10px rgba(255, 190, 11, 0.5),
+                 0 0 20px rgba(255, 190, 11, 0.3),
+                 0 0 30px rgba(255, 190, 11, 0.2);
+  }
+
+  .glitch-text {
+    position: relative;
+    animation: glitch 2s infinite;
+  }
+
+  @keyframes glitch {
+    0%, 100% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff9d;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00d9a0;
+}
