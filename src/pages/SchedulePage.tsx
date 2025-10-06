@@ -39,15 +39,15 @@ export default function SchedulePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-200 via-yellow-300 to-red-400 text-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-red-900 text-white">
       <Navigation />
       
       {/* Background effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 right-10 w-96 h-96 bg-yellow-500 rounded-full filter blur-[150px] opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-orange-500 rounded-full filter blur-[150px] opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-red-500 rounded-full filter blur-[150px] opacity-15 animate-pulse delay-500"></div>
-        <div className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-yellow-600 rounded-full filter blur-[150px] opacity-15 animate-pulse delay-700"></div>
+        <div className="absolute top-10 right-10 w-96 h-96 bg-red-600 rounded-full filter blur-[150px] opacity-15 animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gray-800 rounded-full filter blur-[150px] opacity-20 animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-red-700 rounded-full filter blur-[150px] opacity-10 animate-pulse delay-500"></div>
+        <div className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-gray-700 rounded-full filter blur-[150px] opacity-15 animate-pulse delay-700"></div>
 
         {/* Retro grid pattern */}
         <div className="absolute inset-0 opacity-5" style={{
@@ -59,18 +59,16 @@ export default function SchedulePage() {
       <section className="relative pt-32 pb-8 px-4 sm:px-6 lg:px-8 min-h-screen">
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header Section */}
-          <div className="text-center mb-8">
-            <div className="mb-4 flex justify-center items-center gap-2 md:gap-4">
-              <Clock className="text-orange-600 animate-bounce" size={32} />
-              <h1 className="text-2xl md:text-4xl font-black text-gray-800 cyber-title">
-                🕐 EVENT SCHEDULE 🕐
-              </h1>
-              <Clock className="text-orange-600 animate-bounce" size={32} />
+          <div className="text-center mb-6">
+            <h1 className="text-xl md:text-2xl font-black text-white gaming-font mb-3">
+              <span className="text-red-400">[</span>EVENT SCHEDULE<span className="text-red-400">]</span>
+            </h1>
+            <div className="bg-red-900/80 border border-red-500 rounded-lg p-3 max-w-2xl mx-auto">
+              <p className="text-white text-sm gaming-font font-bold">
+                <span className="text-red-300">🎮</span> COMPLETE ROADMAP TO VICTORY <span className="text-red-300">🎮</span><br/>
+                <span className="text-red-200">24 HOURS • NON-STOP HACKING • EPIC PRIZES</span>
+              </p>
             </div>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto mb-4"></div>
-            <p className="text-gray-800 text-sm md:text-lg max-w-3xl mx-auto leading-relaxed hack-font font-bold">
-              🎮 YOUR COMPLETE ROADMAP FROM REGISTRATION TO VICTORY. MARK YOUR CALENDARS AND PREPARE FOR 24 HOURS OF NON-STOP HACKING EXCITEMENT! 🎮
-            </p>
           </div>
 
           {/* Timeline */}
@@ -80,62 +78,66 @@ export default function SchedulePage() {
               return (
                 <div key={phaseIndex} className="relative">
                   {/* Phase Header */}
-                  <div className="flex items-center mb-6">
+                  <div className="flex items-center mb-4">
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center mr-4 transition-all hover:scale-110 bg-white/90 border-2 border-orange-400 shadow-lg"
+                      className="w-10 h-10 rounded-lg flex items-center justify-center mr-3 transition-all hover:scale-110 bg-gradient-to-br from-red-500 to-red-700 border border-red-400 shadow-lg group-hover:from-yellow-400 group-hover:to-red-500"
                     >
-                      <PhaseIcon className="text-orange-600" size={24} />
+                      <PhaseIcon className="text-white" size={20} />
                     </div>
                     <div>
-                      <h2 className="text-xl md:text-2xl font-black text-gray-800 hack-font">{phase.phase.toUpperCase()}</h2>
+                      <h2 className="text-lg font-black text-white gaming-font">{phase.phase.toUpperCase()}</h2>
                       <div className="flex items-center gap-2 mt-1">
-                        <div className="w-2 h-2 rounded-full animate-pulse bg-orange-500"></div>
-                        <span className="text-sm text-gray-800 hack-font font-bold">{phase.events.length} EVENTS</span>
+                        <div className="w-2 h-2 rounded-full animate-pulse bg-red-400"></div>
+                        <span className="text-xs text-red-200 gaming-font font-bold">{phase.events.length} EVENTS</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Events Timeline */}
-                  <div className="ml-6 border-l-4 border-orange-300">
+                  <div className="ml-6 border-l-2 border-red-500/50">
                     {phase.events.map((event, eventIndex) => (
-                      <div key={eventIndex} className="relative pl-8 pb-8 last:pb-0 group">
+                      <div key={eventIndex} className="relative pl-6 pb-6 last:pb-0 group">
                         {/* Timeline dot */}
-                        <div className="absolute left-0 top-2 w-6 h-6 rounded-full transform -translate-x-[13px] transition-all group-hover:scale-125 bg-orange-500 shadow-lg">
+                        <div className="absolute left-0 top-2 w-4 h-4 rounded-full transform -translate-x-[9px] transition-all group-hover:scale-125 bg-red-500 shadow-lg">
                           {event.status === 'completed' && (
-                            <CheckCircle size={16} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white" />
+                            <CheckCircle size={12} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white" />
                           )}
                         </div>
 
                         {/* Event Card */}
-                        <div className="bg-white/90 backdrop-blur-sm border-2 border-orange-300 rounded-xl p-4 md:p-6 transition-all duration-300 hover:transform hover:translate-x-2 hover:shadow-xl relative overflow-hidden hover:border-orange-500">
+                        <div className="bg-gradient-to-br from-gray-900/90 to-black/95 border border-red-500/50 rounded-lg p-4 transition-all duration-300 hover:transform hover:translate-x-2 hover:shadow-2xl relative overflow-hidden hover:border-red-400 group">
+                          {/* Rich hover effects */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-transparent to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/5 via-red-500/5 to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          
                           <div className="relative z-10">
-                            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-                              <div className="flex items-center gap-2 mb-2 md:mb-0">
-                                <Zap className="text-orange-500" size={18} />
-                                <h3 className="text-base md:text-lg font-black text-gray-800 hack-font">{event.title.toUpperCase()}</h3>
+                            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                              <div className="flex items-center gap-2 mb-1 md:mb-0">
+                                <Zap className="text-red-400" size={16} />
+                                <h3 className="text-sm font-black text-white gaming-font group-hover:text-yellow-200 transition-colors duration-300">{event.title.toUpperCase()}</h3>
                               </div>
                               <div className="flex items-center gap-2">
-                                <Clock size={14} className="text-orange-500" />
-                                <span className="text-sm md:text-base hack-font font-black text-orange-600">
+                                <Clock size={12} className="text-red-400" />
+                                <span className="text-xs gaming-font font-black text-red-300">
                                   {event.time.toUpperCase()}
                                 </span>
                               </div>
                             </div>
                             
-                            <p className="text-gray-800 text-sm md:text-base leading-relaxed hack-font font-bold">
+                            <p className="text-red-200 text-xs leading-relaxed gaming-font font-bold group-hover:text-white transition-colors duration-300">
                               {event.description.toUpperCase()}
                             </p>
                             
                             {/* Status Badge */}
-                            <div className="mt-3">
+                            <div className="mt-2">
                               {event.status === 'completed' ? (
-                                <span className="inline-flex items-center gap-2 px-2 py-1 rounded-full text-xs font-black bg-green-500 text-white gaming-font">
-                                  <CheckCircle size={12} />
+                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-black bg-green-500 text-white gaming-font">
+                                  <CheckCircle size={10} />
                                   COMPLETED
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-2 px-2 py-1 rounded-full text-xs font-black bg-orange-500 text-white gaming-font">
-                                  <Bell size={12} />
+                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-black bg-red-500 text-white gaming-font">
+                                  <Bell size={10} />
                                   UPCOMING
                                 </span>
                               )}
@@ -177,24 +179,6 @@ export default function SchedulePage() {
             </div>
           </div>
 
-          {/* Quick Facts */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-white/90 backdrop-blur-sm border-2 border-orange-400 rounded-xl p-4 text-center hover:scale-105 transition-all duration-300 shadow-lg">
-              <Trophy className="text-orange-500 mx-auto mb-3" size={32} />
-              <h3 className="text-base font-black text-gray-800 mb-1 hack-font">24 HOURS</h3>
-              <p className="text-gray-800 text-xs hack-font font-bold">OF NON-STOP HACKING</p>
-            </div>
-            <div className="bg-white/90 backdrop-blur-sm border-2 border-orange-400 rounded-xl p-4 text-center hover:scale-105 transition-all duration-300 shadow-lg">
-              <Zap className="text-red-500 mx-auto mb-3" size={32} />
-              <h3 className="text-base font-black text-gray-800 mb-1 hack-font">LIVE SUPPORT</h3>
-              <p className="text-gray-800 text-xs hack-font font-bold">MENTORS & Q&A SESSIONS</p>
-            </div>
-            <div className="bg-white/90 backdrop-blur-sm border-2 border-orange-400 rounded-xl p-4 text-center hover:scale-105 transition-all duration-300 shadow-lg">
-              <Award className="text-yellow-500 mx-auto mb-3" size={32} />
-              <h3 className="text-base font-black text-gray-800 mb-1 hack-font">EXCITING PRIZES</h3>
-              <p className="text-gray-800 text-xs hack-font font-bold">FOR TOP PERFORMERS</p>
-            </div>
-          </div>
         </div>
       </section>
 
